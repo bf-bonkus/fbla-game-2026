@@ -18,3 +18,7 @@ config/name="FBLA 2026"
 run/main_scene="uid://xjc52my3hf56"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+ReactorInstance="*uid://bx1hj8y5l0i0j"

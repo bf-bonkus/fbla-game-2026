@@ -4,3 +4,4 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("Welcome to FBLA 2026")
+	ReactorInstance.load("res://reactor/README.md")
