@@ -22,3 +22,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 ReactorInstance="*uid://bx1hj8y5l0i0j"
+
+[debug]
+
+gdscript/warnings/untyped_declaration=1
