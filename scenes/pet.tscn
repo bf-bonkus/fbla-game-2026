@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://bgran57ybhw60"]
+
+[ext_resource type="Script" uid="uid://cuxtgwyjtrmce" path="res://scripts/pet.gd" id="1_5c8qe"]
+[ext_resource type="Script" uid="uid://drsg6fg7d643y" path="res://addons/srs_reactor/reactor_actor.gd" id="1_mdqe4"]
+[ext_resource type="Script" uid="uid://bwlqpf5ec0gmk" path="res://addons/srs_reactor/resources/rule.gd" id="2_hmkkh"]
+[ext_resource type="Script" uid="uid://dodh4cao0jbi1" path="res://addons/srs_reactor/resources/criterion.gd" id="3_6nmc3"]
+[ext_resource type="Script" uid="uid://bbof7ftl2n38f" path="res://addons/srs_reactor/resources/response.gd" id="5_6nmc3"]
+[ext_resource type="Texture2D" uid="uid://cpoevatwsbk74" path="res://icon.svg" id="6_5c8qe"]
+[ext_resource type="Texture2D" uid="uid://c8o0bx1h4gvun" path="res://assets/frog.png" id="6_axfbl"]
+[ext_resource type="Script" uid="uid://cvgre7yc731ao" path="res://components/jitter_timer.gd" id="8_hio3l"]
+
+[sub_resource type="Resource" id="Resource_5c8qe"]
+script = ExtResource("3_6nmc3")
+key = &"happiness"
+desired_value = ">=10"
+metadata/_custom_type_script = "uid://dodh4cao0jbi1"
+
+[sub_resource type="Resource" id="Resource_6nmc3"]
+script = ExtResource("5_6nmc3")
+type = 1
+params = Dictionary[StringName, String]({
+&"name": "still"
+})
+metadata/_custom_type_script = "uid://bbof7ftl2n38f"
+
+[sub_resource type="Resource" id="Resource_hio3l"]
+script = ExtResource("2_hmkkh")
+name = &"IS_HAPPY"
+criteria = Array[ExtResource("3_6nmc3")]([SubResource("Resource_5c8qe")])
+responses = Array[ExtResource("5_6nmc3")]([SubResource("Resource_6nmc3")])
+metadata/_custom_type_script = "uid://bwlqpf5ec0gmk"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5c8qe"]
+atlas = ExtResource("6_axfbl")
+region = Rect2(0, 0, 34, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hio3l"]
+atlas = ExtResource("6_axfbl")
+region = Rect2(34, 0, 34, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekye6"]
+atlas = ExtResource("6_axfbl")
+region = Rect2(68, 0, 34, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jn77u"]
+atlas = ExtResource("6_axfbl")
+region = Rect2(102, 0, 34, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qx5n6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5c8qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hio3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekye6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jn77u")
+}],
+"loop": true,
+"name": &"glad",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_5c8qe")
+}],
+"loop": true,
+"name": &"still",
+"speed": 5.0
+}]
+
+[node name="Pet" type="Node2D" unique_id=1581812624]
+script = ExtResource("1_5c8qe")
+
+[node name="ReactorActor" type="Node" parent="." unique_id=1644556535]
+script = ExtResource("1_mdqe4")
+key = &"pet"
+rules = Array[ExtResource("2_hmkkh")]([SubResource("Resource_hio3l")])
+context = Dictionary[StringName, float]({
+&"happiness": 2.0,
+&"hunger": 5.0
+})
+metadata/_custom_type_script = "uid://drsg6fg7d643y"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2061685729]
+sprite_frames = SubResource("SpriteFrames_qx5n6")
+animation = &"glad"
+autoplay = "glad"
+
+[node name="JitterTimer" type="Timer" parent="." unique_id=2085476649]
+wait_time = 5.0
+autostart = true
+script = ExtResource("8_hio3l")
+jitter = 5.0
+metadata/_custom_type_script = "uid://cvgre7yc731ao"
+
+[connection signal="response_animate" from="ReactorActor" to="." method="_on_reactor_actor_response_animate"]
+[connection signal="timeout" from="JitterTimer" to="." method="_on_jitter_timer_timeout"]

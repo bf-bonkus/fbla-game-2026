@@ -1,6 +1,17 @@
 [gd_scene format=3 uid="uid://xjc52my3hf56"]
 
-[ext_resource type="Script" uid="uid://std0pgmr3gj0" path="res://scenes/main.gd" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://std0pgmr3gj0" path="res://scripts/main.gd" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://bgran57ybhw60" path="res://scenes/pet.tscn" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://c3t0wk280her5" path="res://scenes/control.tscn" id="3_sugp2"]
 
 [node name="Main" type="Node" unique_id=1545899837]
 script = ExtResource("1_o5qli")
+
+[node name="Pet" parent="." unique_id=1581812624 instance=ExtResource("2_0wfyh")]
+
+[node name="Camera" type="Camera2D" parent="." unique_id=122697356]
+zoom = Vector2(5, 5)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1881114279]
+
+[node name="Control" parent="CanvasLayer" unique_id=1435167270 instance=ExtResource("3_sugp2")]
