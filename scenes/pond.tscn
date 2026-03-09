@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ce6dftbyjlfmb"]
+
+[ext_resource type="Texture2D" uid="uid://cy3ow0n8d0qmx" path="res://assets/background.png" id="1_hvmvx"]
+[ext_resource type="PackedScene" uid="uid://c3t0wk280her5" path="res://scenes/user_interface.tscn" id="2_go7bl"]
+
+[node name="Pond" type="Node2D" unique_id=1115877766]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=445821538]
+position = Vector2(0, -15)
+scale = Vector2(2, 2)
+texture = ExtResource("1_hvmvx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1277149051]
+
+[node name="UserInterface" parent="CanvasLayer" unique_id=1435167270 instance=ExtResource("2_go7bl")]

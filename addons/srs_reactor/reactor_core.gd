@@ -3,6 +3,9 @@ extends Node
 
 ## Every actor in the current scene, accessible by their defined key.
 @export var actors: Dictionary[StringName, ReactorActor]
+@export var global_context: Dictionary[StringName, float]
+
+var debug = true
 
 ## Query Reactor for a response
 func query(actor: String, context: Dictionary[StringName, float], rules: Array[Rule]) -> void:
@@ -15,8 +18,10 @@ func query(actor: String, context: Dictionary[StringName, float], rules: Array[R
 		# Check all criteria and see if they match
 		for criterion in rule.criteria:
 			var existing = context.get(criterion.key)
-			if not existing:
-				push_warning("Reactor: Rule %s tried to access a nonexistent context." % rule.name)
+			if existing == null:
+				if debug:
+					var format_string = "[Reactor]: Rule %s tried to access nonexistent context %s."
+					print(format_string % [rule.name, criterion.key])
 				continue
 			
 			if check_value(criterion.desired_value, existing):
@@ -37,6 +42,10 @@ func query(actor: String, context: Dictionary[StringName, float], rules: Array[R
 	
 	# Select a random rule that matched
 	var selected_rule = matched_rules[randi_range(0, len(matched_rules) - 1)]
+	
+	if debug:
+		print("[Reactor]: Selected rule " + selected_rule.name)
+	
 	var selected_response = selected_rule.responses[randi_range(0, len(selected_rule.responses) - 1)]
 	actors[actor].handle_response(selected_response)
 	

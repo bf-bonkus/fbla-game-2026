@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://bppwl3pl7fdcu"]
+
+[ext_resource type="Texture2D" uid="uid://bxkivipvnikat" path="res://assets/title_background.png" id="1_fgkus"]
+[ext_resource type="Texture2D" uid="uid://cafee30k0c54r" path="res://secondrate.jpg" id="2_sa3yf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fgkus"]
+font_size = 55
+
+[sub_resource type="InputEventKey" id="InputEventKey_fgkus"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_sa3yf"]
+events = [SubResource("InputEventKey_fgkus")]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sa3yf"]
+blend_mode = 3
+
+[node name="Title Screen" type="Control" unique_id=860841088]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="." unique_id=460368479]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_fgkus")
+
+[node name="Body" type="MarginContainer" parent="." unique_id=2072117992]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 192
+theme_override_constants/margin_top = 81
+theme_override_constants/margin_right = 192
+theme_override_constants/margin_bottom = 81
+
+[node name="Title" type="VBoxContainer" parent="Body" unique_id=929962493]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="FBLA 2026" type="Label" parent="Body/Title" unique_id=733664686]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "FBLA 2026"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title" type="Label" parent="Body/Title" unique_id=1180371824]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Pet Pianofrog (Working Title)"
+label_settings = SubResource("LabelSettings_fgkus")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Inputs" type="MarginContainer" parent="Body" unique_id=44246715]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Inputs" type="HBoxContainer" parent="Body/Inputs" unique_id=498801928]
+layout_mode = 2
+
+[node name="PetName" type="Label" parent="Body/Inputs/Inputs" unique_id=506957323]
+layout_mode = 2
+text = "Pet Name:"
+
+[node name="NameEdit" type="LineEdit" parent="Body/Inputs/Inputs" unique_id=1618922160]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Mozaribbit"
+max_length = 32
+
+[node name="Play" type="Button" parent="Body/Inputs/Inputs" unique_id=716390880]
+layout_mode = 2
+shortcut = SubResource("Shortcut_sa3yf")
+text = "Play"
+
+[node name="SecondRateLogo" type="TextureRect" parent="." unique_id=1466252833]
+material = SubResource("CanvasItemMaterial_sa3yf")
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -128.0
+offset_right = 128.0
+grow_vertical = 0
+texture = ExtResource("2_sa3yf")

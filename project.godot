@@ -22,10 +22,15 @@ config/icon="res://icon.svg"
 [autoload]
 
 ReactorCore="*uid://cprhe0xbn1iw8"
+Transactions="*uid://cnvkh4aagx5o1"
 
 [debug]
 
 gdscript/warnings/untyped_declaration=1
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 

@@ -2,16 +2,36 @@
 
 [ext_resource type="Script" uid="uid://std0pgmr3gj0" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://bgran57ybhw60" path="res://scenes/pet.tscn" id="2_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://c3t0wk280her5" path="res://scenes/control.tscn" id="3_sugp2"]
 
 [node name="Main" type="Node" unique_id=1545899837]
 script = ExtResource("1_o5qli")
+
+[node name="Blackground" type="ColorRect" parent="." unique_id=55465016]
+custom_minimum_size = Vector2(230, 130)
+offset_left = -115.0
+offset_top = -65.0
+offset_right = -75.0
+offset_bottom = -25.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Pet" parent="." unique_id=1581812624 instance=ExtResource("2_0wfyh")]
 
 [node name="Camera" type="Camera2D" parent="." unique_id=122697356]
 zoom = Vector2(5, 5)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1881114279]
+[node name="UserInterface" type="CanvasLayer" parent="." unique_id=1457717448]
 
-[node name="Control" parent="CanvasLayer" unique_id=1435167270 instance=ExtResource("3_sugp2")]
+[node name="LoadingScreen" type="ColorRect" parent="UserInterface" unique_id=688320882]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -115.0
+offset_top = -65.0
+offset_right = -1037.0
+offset_bottom = -584.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 0)

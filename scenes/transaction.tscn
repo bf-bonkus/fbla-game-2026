@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bv7jx4ovato24"]
+
+[node name="Transaction" type="PanelContainer" unique_id=1743749297]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="Label" parent="." unique_id=579390481]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Name"
+
+[node name="Cost" type="Label" parent="." unique_id=1130473349]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "$20"
+horizontal_alignment = 2

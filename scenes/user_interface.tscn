@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://c3t0wk280her5"]
+
+[ext_resource type="Script" uid="uid://cj84mhejstwmo" path="res://scripts/user_interface.gd" id="1_jbsfc"]
+[ext_resource type="PackedScene" uid="uid://isr7ytf0wdlj" path="res://scenes/breakdown.tscn" id="3_brbbq"]
+[ext_resource type="PackedScene" uid="uid://bxqepb6dgdp4y" path="res://scenes/inventory.tscn" id="4_jbsfc"]
+
+[node name="UserInterface" type="Control" unique_id=1435167270]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jbsfc")
+
+[node name="Inventory" parent="." unique_id=214066356 instance=ExtResource("4_jbsfc")]
+layout_mode = 1
+offset_top = -136.0
+
+[node name="Breakdown" parent="." unique_id=1254823197 instance=ExtResource("3_brbbq")]
+visible = false
+layout_mode = 1
+
+[node name="CostButton" type="Button" parent="." unique_id=1685646942]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -102.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "Cost of Care"
+icon_alignment = 1
+
+[connection signal="pressed" from="CostButton" to="." method="_on_menu_button_pressed"]

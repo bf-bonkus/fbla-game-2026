@@ -2,76 +2,244 @@
 
 [ext_resource type="Script" uid="uid://cuxtgwyjtrmce" path="res://scripts/pet.gd" id="1_5c8qe"]
 [ext_resource type="Script" uid="uid://drsg6fg7d643y" path="res://addons/srs_reactor/reactor_actor.gd" id="1_mdqe4"]
-[ext_resource type="Script" uid="uid://bwlqpf5ec0gmk" path="res://addons/srs_reactor/resources/rule.gd" id="2_hmkkh"]
-[ext_resource type="Script" uid="uid://dodh4cao0jbi1" path="res://addons/srs_reactor/resources/criterion.gd" id="3_6nmc3"]
-[ext_resource type="Script" uid="uid://bbof7ftl2n38f" path="res://addons/srs_reactor/resources/response.gd" id="5_6nmc3"]
-[ext_resource type="Texture2D" uid="uid://cpoevatwsbk74" path="res://icon.svg" id="6_5c8qe"]
-[ext_resource type="Texture2D" uid="uid://c8o0bx1h4gvun" path="res://assets/frog.png" id="6_axfbl"]
+[ext_resource type="Texture2D" uid="uid://bfoo1k07flmqw" path="res://assets/frog-crying.png" id="3_5c8qe"]
+[ext_resource type="Script" uid="uid://bwlqpf5ec0gmk" path="res://addons/srs_reactor/resources/rule.gd" id="3_jn77u"]
+[ext_resource type="Texture2D" uid="uid://d0jntqmlkq68o" path="res://assets/frog-glee.png" id="4_hio3l"]
+[ext_resource type="Script" uid="uid://dodh4cao0jbi1" path="res://addons/srs_reactor/resources/criterion.gd" id="4_qx5n6"]
+[ext_resource type="Script" uid="uid://bbof7ftl2n38f" path="res://addons/srs_reactor/resources/response.gd" id="5_bqxis"]
+[ext_resource type="Texture2D" uid="uid://f4tsv2alolxn" path="res://assets/frog-happy.png" id="5_ekye6"]
+[ext_resource type="Texture2D" uid="uid://dnfmn07eo7qay" path="res://assets/frog-pissed.png" id="6_jn77u"]
 [ext_resource type="Script" uid="uid://cvgre7yc731ao" path="res://components/jitter_timer.gd" id="8_hio3l"]
 
-[sub_resource type="Resource" id="Resource_5c8qe"]
-script = ExtResource("3_6nmc3")
-key = &"happiness"
-desired_value = ">=10"
+[sub_resource type="Resource" id="Resource_h3mvd"]
+script = ExtResource("4_qx5n6")
+key = &"hunger"
+desired_value = ">80"
 metadata/_custom_type_script = "uid://dodh4cao0jbi1"
 
-[sub_resource type="Resource" id="Resource_6nmc3"]
-script = ExtResource("5_6nmc3")
+[sub_resource type="Resource" id="Resource_aidmd"]
+script = ExtResource("5_bqxis")
 type = 1
 params = Dictionary[StringName, String]({
-&"name": "still"
+&"name": "glee"
 })
 metadata/_custom_type_script = "uid://bbof7ftl2n38f"
 
-[sub_resource type="Resource" id="Resource_hio3l"]
-script = ExtResource("2_hmkkh")
-name = &"IS_HAPPY"
-criteria = Array[ExtResource("3_6nmc3")]([SubResource("Resource_5c8qe")])
-responses = Array[ExtResource("5_6nmc3")]([SubResource("Resource_6nmc3")])
+[sub_resource type="Resource" id="Resource_n5x2u"]
+script = ExtResource("3_jn77u")
+name = &"gleeful"
+criteria = Array[ExtResource("4_qx5n6")]([SubResource("Resource_h3mvd")])
+responses = Array[ExtResource("5_bqxis")]([SubResource("Resource_aidmd")])
 metadata/_custom_type_script = "uid://bwlqpf5ec0gmk"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5c8qe"]
-atlas = ExtResource("6_axfbl")
+[sub_resource type="Resource" id="Resource_2gogp"]
+script = ExtResource("4_qx5n6")
+key = &"hunger"
+desired_value = "<=80"
+metadata/_custom_type_script = "uid://dodh4cao0jbi1"
+
+[sub_resource type="Resource" id="Resource_yrh6d"]
+script = ExtResource("4_qx5n6")
+key = &"hunger"
+desired_value = ">=40"
+metadata/_custom_type_script = "uid://dodh4cao0jbi1"
+
+[sub_resource type="Resource" id="Resource_yw4dw"]
+script = ExtResource("5_bqxis")
+type = 1
+params = Dictionary[StringName, String]({
+&"name": "happy"
+})
+metadata/_custom_type_script = "uid://bbof7ftl2n38f"
+
+[sub_resource type="Resource" id="Resource_7id8g"]
+script = ExtResource("3_jn77u")
+name = &"happy"
+criteria = Array[ExtResource("4_qx5n6")]([SubResource("Resource_2gogp"), SubResource("Resource_yrh6d")])
+responses = Array[ExtResource("5_bqxis")]([SubResource("Resource_yw4dw")])
+metadata/_custom_type_script = "uid://bwlqpf5ec0gmk"
+
+[sub_resource type="Resource" id="Resource_jn77u"]
+script = ExtResource("4_qx5n6")
+key = &"hunger"
+desired_value = "<=40"
+metadata/_custom_type_script = "uid://dodh4cao0jbi1"
+
+[sub_resource type="Resource" id="Resource_qx5n6"]
+script = ExtResource("4_qx5n6")
+key = &"hunger"
+desired_value = ">=20"
+metadata/_custom_type_script = "uid://dodh4cao0jbi1"
+
+[sub_resource type="Resource" id="Resource_bqxis"]
+script = ExtResource("5_bqxis")
+type = 1
+params = Dictionary[StringName, String]({
+&"name": "crying"
+})
+metadata/_custom_type_script = "uid://bbof7ftl2n38f"
+
+[sub_resource type="Resource" id="Resource_dq2qo"]
+script = ExtResource("3_jn77u")
+name = &"sad"
+criteria = Array[ExtResource("4_qx5n6")]([SubResource("Resource_jn77u"), SubResource("Resource_qx5n6")])
+responses = Array[ExtResource("5_bqxis")]([SubResource("Resource_bqxis")])
+metadata/_custom_type_script = "uid://bwlqpf5ec0gmk"
+
+[sub_resource type="Resource" id="Resource_8x6xh"]
+script = ExtResource("4_qx5n6")
+key = &"hunger"
+desired_value = "<=20"
+metadata/_custom_type_script = "uid://dodh4cao0jbi1"
+
+[sub_resource type="Resource" id="Resource_wgx8a"]
+script = ExtResource("5_bqxis")
+type = 1
+params = Dictionary[StringName, String]({
+&"name": "pissed"
+})
+metadata/_custom_type_script = "uid://bbof7ftl2n38f"
+
+[sub_resource type="Resource" id="Resource_3fy86"]
+script = ExtResource("3_jn77u")
+name = &"pissed"
+criteria = Array[ExtResource("4_qx5n6")]([SubResource("Resource_8x6xh")])
+responses = Array[ExtResource("5_bqxis")]([SubResource("Resource_wgx8a")])
+metadata/_custom_type_script = "uid://bwlqpf5ec0gmk"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx5n6"]
+atlas = ExtResource("3_5c8qe")
 region = Rect2(0, 0, 34, 37)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hio3l"]
-atlas = ExtResource("6_axfbl")
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqxis"]
+atlas = ExtResource("3_5c8qe")
 region = Rect2(34, 0, 34, 37)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ekye6"]
-atlas = ExtResource("6_axfbl")
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3mvd"]
+atlas = ExtResource("3_5c8qe")
 region = Rect2(68, 0, 34, 37)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jn77u"]
-atlas = ExtResource("6_axfbl")
+[sub_resource type="AtlasTexture" id="AtlasTexture_aidmd"]
+atlas = ExtResource("3_5c8qe")
+region = Rect2(102, 0, 34, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5x2u"]
+atlas = ExtResource("4_hio3l")
+region = Rect2(0, 0, 34, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gogp"]
+atlas = ExtResource("4_hio3l")
+region = Rect2(34, 0, 34, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrh6d"]
+atlas = ExtResource("4_hio3l")
+region = Rect2(68, 0, 34, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw4dw"]
+atlas = ExtResource("4_hio3l")
+region = Rect2(102, 0, 34, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7id8g"]
+atlas = ExtResource("5_ekye6")
+region = Rect2(0, 0, 34, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dq2qo"]
+atlas = ExtResource("5_ekye6")
+region = Rect2(34, 0, 34, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8x6xh"]
+atlas = ExtResource("5_ekye6")
+region = Rect2(68, 0, 34, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgx8a"]
+atlas = ExtResource("5_ekye6")
+region = Rect2(102, 0, 34, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fy86"]
+atlas = ExtResource("6_jn77u")
+region = Rect2(0, 0, 34, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqq0c"]
+atlas = ExtResource("6_jn77u")
+region = Rect2(34, 0, 34, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11y5v"]
+atlas = ExtResource("6_jn77u")
+region = Rect2(68, 0, 34, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6n1d1"]
+atlas = ExtResource("6_jn77u")
 region = Rect2(102, 0, 34, 37)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qx5n6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5c8qe")
+"texture": SubResource("AtlasTexture_qx5n6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hio3l")
+"texture": SubResource("AtlasTexture_bqxis")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ekye6")
+"texture": SubResource("AtlasTexture_h3mvd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jn77u")
+"texture": SubResource("AtlasTexture_aidmd")
 }],
 "loop": true,
-"name": &"glad",
+"name": &"crying",
 "speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_5c8qe")
+"texture": SubResource("AtlasTexture_n5x2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gogp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrh6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw4dw")
 }],
 "loop": true,
-"name": &"still",
-"speed": 5.0
+"name": &"glee",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7id8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dq2qo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x6xh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgx8a")
+}],
+"loop": true,
+"name": &"happy",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fy86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqq0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11y5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6n1d1")
+}],
+"loop": true,
+"name": &"pissed",
+"speed": 7.0
 }]
 
 [node name="Pet" type="Node2D" unique_id=1581812624]
@@ -80,24 +248,31 @@ script = ExtResource("1_5c8qe")
 [node name="ReactorActor" type="Node" parent="." unique_id=1644556535]
 script = ExtResource("1_mdqe4")
 key = &"pet"
-rules = Array[ExtResource("2_hmkkh")]([SubResource("Resource_hio3l")])
+rules = Array[ExtResource("3_jn77u")]([SubResource("Resource_n5x2u"), SubResource("Resource_7id8g"), SubResource("Resource_dq2qo"), SubResource("Resource_3fy86")])
 context = Dictionary[StringName, float]({
-&"happiness": 2.0,
-&"hunger": 5.0
+&"hunger": 100.0
 })
 metadata/_custom_type_script = "uid://drsg6fg7d643y"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2061685729]
 sprite_frames = SubResource("SpriteFrames_qx5n6")
-animation = &"glad"
-autoplay = "glad"
+animation = &"glee"
+autoplay = "happy"
 
-[node name="JitterTimer" type="Timer" parent="." unique_id=2085476649]
-wait_time = 5.0
+[node name="IdleTimer" type="Timer" parent="." unique_id=2085476649]
+wait_time = 2.5
 autostart = true
 script = ExtResource("8_hio3l")
-jitter = 5.0
+jitter = 0.0
+metadata/_custom_type_script = "uid://cvgre7yc731ao"
+
+[node name="HungerTimer" type="Timer" parent="." unique_id=73634672]
+wait_time = 2.5
+autostart = true
+script = ExtResource("8_hio3l")
+jitter = 0.0
 metadata/_custom_type_script = "uid://cvgre7yc731ao"
 
 [connection signal="response_animate" from="ReactorActor" to="." method="_on_reactor_actor_response_animate"]
-[connection signal="timeout" from="JitterTimer" to="." method="_on_jitter_timer_timeout"]
+[connection signal="timeout" from="IdleTimer" to="." method="_on_jitter_timer_timeout"]
+[connection signal="timeout" from="HungerTimer" to="." method="_on_hunger_timer_timeout"]
