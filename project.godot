@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 
 ReactorCore="*uid://cprhe0xbn1iw8"
 Transactions="*uid://cnvkh4aagx5o1"
+Globals="*uid://bw3k0y10gpw72"
 
 [debug]
 

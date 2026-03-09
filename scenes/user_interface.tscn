@@ -4,6 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://isr7ytf0wdlj" path="res://scenes/breakdown.tscn" id="3_brbbq"]
 [ext_resource type="PackedScene" uid="uid://bxqepb6dgdp4y" path="res://scenes/inventory.tscn" id="4_jbsfc"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_y1h3b"]
+font_size = 20
+
 [node name="UserInterface" type="Control" unique_id=1435167270]
 layout_mode = 3
 anchors_preset = 15
@@ -16,6 +19,19 @@ script = ExtResource("1_jbsfc")
 [node name="Inventory" parent="." unique_id=214066356 instance=ExtResource("4_jbsfc")]
 layout_mode = 1
 offset_top = -136.0
+
+[node name="NamePanel" type="PanelContainer" parent="." unique_id=676317382]
+layout_mode = 0
+offset_left = 523.5
+offset_top = 160.0
+offset_right = 628.5
+offset_bottom = 200.0
+
+[node name="Name" type="Label" parent="NamePanel" unique_id=45767910]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Mozaribbit"
+label_settings = SubResource("LabelSettings_y1h3b")
 
 [node name="Breakdown" parent="." unique_id=1254823197 instance=ExtResource("3_brbbq")]
 visible = false
