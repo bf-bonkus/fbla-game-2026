@@ -21,17 +21,26 @@ layout_mode = 1
 offset_top = -136.0
 
 [node name="NamePanel" type="PanelContainer" parent="." unique_id=676317382]
-layout_mode = 0
-offset_left = 523.5
-offset_top = 160.0
-offset_right = 628.5
-offset_bottom = 200.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -198.0
+offset_right = 134.0
+offset_bottom = -158.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Name" type="Label" parent="NamePanel" unique_id=45767910]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Mozaribbit"
 label_settings = SubResource("LabelSettings_y1h3b")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Breakdown" parent="." unique_id=1254823197 instance=ExtResource("3_brbbq")]
 visible = false

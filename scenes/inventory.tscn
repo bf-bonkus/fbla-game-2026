@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://y3s5wfw7thth" path="res://scripts/inventory.gd" id="1_hj2ta"]
 [ext_resource type="Texture2D" uid="uid://ctv8yhhaauldt" path="res://assets/fly.png" id="1_qw0r6"]
+[ext_resource type="Texture2D" uid="uid://c1jromihk56f5" path="res://assets/soap.png" id="3_ty45s"]
 
 [node name="Inventory" type="MarginContainer" unique_id=214066356]
 anchors_preset = 12
@@ -22,4 +23,11 @@ layout_mode = 2
 icon = ExtResource("1_qw0r6")
 expand_icon = true
 
+[node name="Clean" type="Button" parent="HBoxContainer" unique_id=1837477685]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+icon = ExtResource("3_ty45s")
+expand_icon = true
+
 [connection signal="pressed" from="HBoxContainer/Feed" to="." method="_on_feed_pressed"]
+[connection signal="pressed" from="HBoxContainer/Clean" to="." method="_on_clean_pressed"]

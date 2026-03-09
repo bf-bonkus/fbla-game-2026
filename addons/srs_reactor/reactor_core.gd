@@ -20,14 +20,13 @@ func query(actor: String, context: Dictionary[StringName, float], rules: Array[R
 			var existing = context.get(criterion.key)
 			if existing == null:
 				if debug:
-					var format_string = "[Reactor]: Rule %s tried to access nonexistent context %s."
-					print(format_string % [rule.name, criterion.key])
+					print("[Reactor]: Rule {0} tried to access nonexistent context {1}.".format([rule.name, criterion.key]))
 				continue
 			
 			if check_value(criterion.desired_value, existing):
-				matches += 1
+				matches += criterion.weight
 		
-		if matches == len(rule.criteria):
+		if matches >= len(rule.criteria):
 			if matches > match_length:
 				match_length = matches
 				matched_rules = [rule]

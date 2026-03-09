@@ -10,41 +10,24 @@
 [ext_resource type="Texture2D" uid="uid://f4tsv2alolxn" path="res://assets/frog-happy.png" id="5_ekye6"]
 [ext_resource type="Texture2D" uid="uid://dnfmn07eo7qay" path="res://assets/frog-pissed.png" id="6_jn77u"]
 [ext_resource type="Script" uid="uid://cvgre7yc731ao" path="res://components/jitter_timer.gd" id="8_hio3l"]
+[ext_resource type="Texture2D" uid="uid://dn1308g6augfj" path="res://assets/thought-clean.png" id="10_aidmd"]
+[ext_resource type="Texture2D" uid="uid://bqy6wc4nthaap" path="res://assets/thought-hunger.png" id="10_qx5n6"]
+[ext_resource type="Texture2D" uid="uid://1rt8nsaaxi55" path="res://assets/dirty.png" id="11_h3mvd"]
+[ext_resource type="Texture2D" uid="uid://cryyn7y8rlrwp" path="res://assets/bubble.png" id="12_bqxis"]
 
-[sub_resource type="Resource" id="Resource_h3mvd"]
+[sub_resource type="Resource" id="Resource_qx5n6"]
 script = ExtResource("4_qx5n6")
 key = &"hunger"
-desired_value = ">80"
+desired_value = ">=70"
 metadata/_custom_type_script = "uid://dodh4cao0jbi1"
-
-[sub_resource type="Resource" id="Resource_aidmd"]
-script = ExtResource("5_bqxis")
-type = 1
-params = Dictionary[StringName, String]({
-&"name": "glee"
-})
-metadata/_custom_type_script = "uid://bbof7ftl2n38f"
 
 [sub_resource type="Resource" id="Resource_n5x2u"]
-script = ExtResource("3_jn77u")
-name = &"gleeful"
-criteria = Array[ExtResource("4_qx5n6")]([SubResource("Resource_h3mvd")])
-responses = Array[ExtResource("5_bqxis")]([SubResource("Resource_aidmd")])
-metadata/_custom_type_script = "uid://bwlqpf5ec0gmk"
-
-[sub_resource type="Resource" id="Resource_2gogp"]
 script = ExtResource("4_qx5n6")
-key = &"hunger"
-desired_value = "<=80"
+key = &"dirtiness"
+desired_value = "<=30"
 metadata/_custom_type_script = "uid://dodh4cao0jbi1"
 
-[sub_resource type="Resource" id="Resource_yrh6d"]
-script = ExtResource("4_qx5n6")
-key = &"hunger"
-desired_value = ">=40"
-metadata/_custom_type_script = "uid://dodh4cao0jbi1"
-
-[sub_resource type="Resource" id="Resource_yw4dw"]
+[sub_resource type="Resource" id="Resource_h3mvd"]
 script = ExtResource("5_bqxis")
 type = 1
 params = Dictionary[StringName, String]({
@@ -52,10 +35,31 @@ params = Dictionary[StringName, String]({
 })
 metadata/_custom_type_script = "uid://bbof7ftl2n38f"
 
-[sub_resource type="Resource" id="Resource_7id8g"]
+[sub_resource type="Resource" id="Resource_aidmd"]
 script = ExtResource("3_jn77u")
 name = &"happy"
-criteria = Array[ExtResource("4_qx5n6")]([SubResource("Resource_2gogp"), SubResource("Resource_yrh6d")])
+criteria = Array[ExtResource("4_qx5n6")]([SubResource("Resource_qx5n6"), SubResource("Resource_n5x2u")])
+responses = Array[ExtResource("5_bqxis")]([SubResource("Resource_h3mvd")])
+metadata/_custom_type_script = "uid://bwlqpf5ec0gmk"
+
+[sub_resource type="Resource" id="Resource_yrh6d"]
+script = ExtResource("4_qx5n6")
+key = &"hunger"
+desired_value = "<=70"
+metadata/_custom_type_script = "uid://dodh4cao0jbi1"
+
+[sub_resource type="Resource" id="Resource_yw4dw"]
+script = ExtResource("5_bqxis")
+type = 1
+params = Dictionary[StringName, String]({
+&"name": "hungry-happy"
+})
+metadata/_custom_type_script = "uid://bbof7ftl2n38f"
+
+[sub_resource type="Resource" id="Resource_7id8g"]
+script = ExtResource("3_jn77u")
+name = &"hungry-happy"
+criteria = Array[ExtResource("4_qx5n6")]([SubResource("Resource_yrh6d")])
 responses = Array[ExtResource("5_bqxis")]([SubResource("Resource_yw4dw")])
 metadata/_custom_type_script = "uid://bwlqpf5ec0gmk"
 
@@ -65,24 +69,18 @@ key = &"hunger"
 desired_value = "<=40"
 metadata/_custom_type_script = "uid://dodh4cao0jbi1"
 
-[sub_resource type="Resource" id="Resource_qx5n6"]
-script = ExtResource("4_qx5n6")
-key = &"hunger"
-desired_value = ">=20"
-metadata/_custom_type_script = "uid://dodh4cao0jbi1"
-
 [sub_resource type="Resource" id="Resource_bqxis"]
 script = ExtResource("5_bqxis")
 type = 1
 params = Dictionary[StringName, String]({
-&"name": "crying"
+&"name": "hungry-sad"
 })
 metadata/_custom_type_script = "uid://bbof7ftl2n38f"
 
 [sub_resource type="Resource" id="Resource_dq2qo"]
 script = ExtResource("3_jn77u")
-name = &"sad"
-criteria = Array[ExtResource("4_qx5n6")]([SubResource("Resource_jn77u"), SubResource("Resource_qx5n6")])
+name = &"hungry-sad"
+criteria = Array[ExtResource("4_qx5n6")]([SubResource("Resource_jn77u")])
 responses = Array[ExtResource("5_bqxis")]([SubResource("Resource_bqxis")])
 metadata/_custom_type_script = "uid://bwlqpf5ec0gmk"
 
@@ -90,22 +88,594 @@ metadata/_custom_type_script = "uid://bwlqpf5ec0gmk"
 script = ExtResource("4_qx5n6")
 key = &"hunger"
 desired_value = "<=20"
+weight = 2
 metadata/_custom_type_script = "uid://dodh4cao0jbi1"
 
 [sub_resource type="Resource" id="Resource_wgx8a"]
 script = ExtResource("5_bqxis")
 type = 1
 params = Dictionary[StringName, String]({
-&"name": "pissed"
+&"name": "hungry-angry"
 })
 metadata/_custom_type_script = "uid://bbof7ftl2n38f"
 
 [sub_resource type="Resource" id="Resource_3fy86"]
 script = ExtResource("3_jn77u")
-name = &"pissed"
+name = &"hungry-angry"
 criteria = Array[ExtResource("4_qx5n6")]([SubResource("Resource_8x6xh")])
 responses = Array[ExtResource("5_bqxis")]([SubResource("Resource_wgx8a")])
 metadata/_custom_type_script = "uid://bwlqpf5ec0gmk"
+
+[sub_resource type="Resource" id="Resource_2gogp"]
+script = ExtResource("4_qx5n6")
+key = &"dirtiness"
+desired_value = ">=30"
+metadata/_custom_type_script = "uid://dodh4cao0jbi1"
+
+[sub_resource type="Resource" id="Resource_11y5v"]
+script = ExtResource("5_bqxis")
+type = 1
+params = Dictionary[StringName, String]({
+&"name": "dirty-happy"
+})
+metadata/_custom_type_script = "uid://bbof7ftl2n38f"
+
+[sub_resource type="Resource" id="Resource_gqq0c"]
+script = ExtResource("3_jn77u")
+name = &"dirty-happy"
+criteria = Array[ExtResource("4_qx5n6")]([SubResource("Resource_2gogp")])
+responses = Array[ExtResource("5_bqxis")]([SubResource("Resource_11y5v")])
+metadata/_custom_type_script = "uid://bwlqpf5ec0gmk"
+
+[sub_resource type="Resource" id="Resource_6n1d1"]
+script = ExtResource("4_qx5n6")
+key = &"dirtiness"
+desired_value = ">=60"
+weight = 2
+metadata/_custom_type_script = "uid://dodh4cao0jbi1"
+
+[sub_resource type="Resource" id="Resource_ty4mp"]
+script = ExtResource("5_bqxis")
+type = 1
+params = Dictionary[StringName, String]({
+&"name": "dirty-sad"
+})
+metadata/_custom_type_script = "uid://bbof7ftl2n38f"
+
+[sub_resource type="Resource" id="Resource_wh0pb"]
+script = ExtResource("3_jn77u")
+name = &"dirty-sad"
+criteria = Array[ExtResource("4_qx5n6")]([SubResource("Resource_6n1d1")])
+responses = Array[ExtResource("5_bqxis")]([SubResource("Resource_ty4mp")])
+metadata/_custom_type_script = "uid://bwlqpf5ec0gmk"
+
+[sub_resource type="Resource" id="Resource_3jnus"]
+script = ExtResource("4_qx5n6")
+key = &"dirtiness"
+desired_value = ">=90"
+weight = 3
+metadata/_custom_type_script = "uid://dodh4cao0jbi1"
+
+[sub_resource type="Resource" id="Resource_quw7g"]
+script = ExtResource("5_bqxis")
+type = 1
+params = Dictionary[StringName, String]({
+&"name": "dirty-angry"
+})
+metadata/_custom_type_script = "uid://bbof7ftl2n38f"
+
+[sub_resource type="Resource" id="Resource_qqryr"]
+script = ExtResource("3_jn77u")
+name = &"dirty-angry"
+criteria = Array[ExtResource("4_qx5n6")]([SubResource("Resource_3jnus")])
+responses = Array[ExtResource("5_bqxis")]([SubResource("Resource_quw7g")])
+metadata/_custom_type_script = "uid://bwlqpf5ec0gmk"
+
+[sub_resource type="Animation" id="Animation_qx5n6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ThoughtBubble:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"happy"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ThoughtBubble:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ThoughtBubble:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"dirty"]
+}
+
+[sub_resource type="Animation" id="Animation_yrh6d"]
+resource_name = "dirty-angry"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ThoughtBubble:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ThoughtBubble:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"pissed"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ThoughtBubble:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"dirty"]
+}
+
+[sub_resource type="Animation" id="Animation_2gogp"]
+resource_name = "dirty-happy"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ThoughtBubble:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ThoughtBubble:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"happy"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ThoughtBubble:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"dirty"]
+}
+
+[sub_resource type="Animation" id="Animation_yw4dw"]
+resource_name = "dirty-sad"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ThoughtBubble:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ThoughtBubble:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"crying"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ThoughtBubble:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"dirty"]
+}
+
+[sub_resource type="Animation" id="Animation_bqxis"]
+resource_name = "happy"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ThoughtBubble:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"happy"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_aidmd"]
+resource_name = "hungry-angry"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ThoughtBubble:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ThoughtBubble:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"pissed"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ThoughtBubble:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hungry"]
+}
+
+[sub_resource type="Animation" id="Animation_h3mvd"]
+resource_name = "hungry-happy"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ThoughtBubble:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ThoughtBubble:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"happy"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ThoughtBubble:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hungry"]
+}
+
+[sub_resource type="Animation" id="Animation_n5x2u"]
+resource_name = "hungry-sad"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ThoughtBubble:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ThoughtBubble:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"crying"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ThoughtBubble:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hungry"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h3mvd"]
+_data = {
+&"RESET": SubResource("Animation_qx5n6"),
+&"dirty-angry": SubResource("Animation_yrh6d"),
+&"dirty-happy": SubResource("Animation_2gogp"),
+&"dirty-sad": SubResource("Animation_yw4dw"),
+&"happy": SubResource("Animation_bqxis"),
+&"hungry-angry": SubResource("Animation_aidmd"),
+&"hungry-happy": SubResource("Animation_h3mvd"),
+&"hungry-sad": SubResource("Animation_n5x2u")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qx5n6"]
 atlas = ExtResource("3_5c8qe")
@@ -220,7 +790,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wgx8a")
 }],
-"loop": true,
+"loop": false,
 "name": &"happy",
 "speed": 7.0
 }, {
@@ -242,32 +812,136 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqryr"]
+atlas = ExtResource("10_aidmd")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qy0n"]
+atlas = ExtResource("10_aidmd")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1ygf"]
+atlas = ExtResource("10_aidmd")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmy16"]
+atlas = ExtResource("10_aidmd")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ty4mp"]
+atlas = ExtResource("10_qx5n6")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh0pb"]
+atlas = ExtResource("10_qx5n6")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jnus"]
+atlas = ExtResource("10_qx5n6")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quw7g"]
+atlas = ExtResource("10_qx5n6")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qqryr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqryr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qy0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1ygf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmy16")
+}],
+"loop": true,
+"name": &"dirty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ty4mp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wh0pb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jnus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_quw7g")
+}],
+"loop": true,
+"name": &"hungry",
+"speed": 5.0
+}]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h3mvd"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 17.61
+gravity = Vector3(0, -84.662, 0)
+
 [node name="Pet" type="Node2D" unique_id=1581812624]
 script = ExtResource("1_5c8qe")
 
 [node name="ReactorActor" type="Node" parent="." unique_id=1644556535]
 script = ExtResource("1_mdqe4")
 key = &"pet"
-rules = Array[ExtResource("3_jn77u")]([SubResource("Resource_n5x2u"), SubResource("Resource_7id8g"), SubResource("Resource_dq2qo"), SubResource("Resource_3fy86")])
+rules = Array[ExtResource("3_jn77u")]([SubResource("Resource_aidmd"), SubResource("Resource_7id8g"), SubResource("Resource_dq2qo"), SubResource("Resource_3fy86"), SubResource("Resource_gqq0c"), SubResource("Resource_wh0pb"), SubResource("Resource_qqryr")])
 context = Dictionary[StringName, float]({
+&"dirtiness": 0.0,
 &"hunger": 100.0
 })
 metadata/_custom_type_script = "uid://drsg6fg7d643y"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2061685729]
+[node name="Expression" type="AnimationPlayer" parent="." unique_id=1133452071]
+libraries/ = SubResource("AnimationLibrary_h3mvd")
+autoplay = &"happy"
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=2061685729]
 sprite_frames = SubResource("SpriteFrames_qx5n6")
-animation = &"glee"
-autoplay = "happy"
+animation = &"happy"
+
+[node name="ThoughtBubble" type="AnimatedSprite2D" parent="." unique_id=1561651642]
+position = Vector2(19, -24)
+sprite_frames = SubResource("SpriteFrames_qqryr")
+animation = &"dirty"
+autoplay = "hungry"
+
+[node name="Dirt" type="Sprite2D" parent="." unique_id=1345711359]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("11_h3mvd")
+
+[node name="Suds" type="GPUParticles2D" parent="." unique_id=1015081039]
+emitting = false
+amount = 10
+texture = ExtResource("12_bqxis")
+one_shot = true
+explosiveness = 0.49
+process_material = SubResource("ParticleProcessMaterial_h3mvd")
 
 [node name="IdleTimer" type="Timer" parent="." unique_id=2085476649]
-wait_time = 2.5
+wait_time = 2.0
 autostart = true
 script = ExtResource("8_hio3l")
 jitter = 0.0
 metadata/_custom_type_script = "uid://cvgre7yc731ao"
 
 [node name="HungerTimer" type="Timer" parent="." unique_id=73634672]
-wait_time = 2.5
+wait_time = 2.0
+autostart = true
+script = ExtResource("8_hio3l")
+jitter = 0.0
+metadata/_custom_type_script = "uid://cvgre7yc731ao"
+
+[node name="DirtTimer" type="Timer" parent="." unique_id=685432748]
+wait_time = 5.0
 autostart = true
 script = ExtResource("8_hio3l")
 jitter = 0.0
@@ -276,3 +950,4 @@ metadata/_custom_type_script = "uid://cvgre7yc731ao"
 [connection signal="response_animate" from="ReactorActor" to="." method="_on_reactor_actor_response_animate"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_jitter_timer_timeout"]
 [connection signal="timeout" from="HungerTimer" to="." method="_on_hunger_timer_timeout"]
+[connection signal="timeout" from="DirtTimer" to="." method="_on_dirt_timer_timeout"]

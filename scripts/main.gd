@@ -14,6 +14,8 @@ func switch_level(level: String, use_pet: bool, use_camera: bool) -> void:
 
 
 func load_level(level: String, use_pet: bool, use_camera: bool) -> void:
+	if not $Pet.visible and use_pet:
+		$Pet/ReactorActor.query()
 	$Pet.visible = use_pet
 	$Camera.enabled = use_camera
 	

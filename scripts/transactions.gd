@@ -3,7 +3,7 @@ extends Node
 var cash := 0.0
 
 var transactions: Array[transaction]
-signal transacted(transaction: transaction)
+signal transacted
 
 class transaction:
 	var purpose: String
@@ -20,4 +20,4 @@ func transact(purpose: String, diff: float) -> void:
 	transactions.append(new_transaction)
 	cash += diff
 	ReactorCore.global_context["cash"] = cash
-	transacted.emit(new_transaction)
+	transacted.emit()
