@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0jntqmlkq68o"
-path="res://.godot/imported/frog-glee.png-41e81eee302fd10a6d8953efd17adb0a.ctex"
+uid="uid://dnfmn07eo7qay"
+path="res://.godot/imported/frog-pissed.png-268db51216f108abf8375ac30715de3c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/frog-glee.png"
-dest_files=["res://.godot/imported/frog-glee.png-41e81eee302fd10a6d8953efd17adb0a.ctex"]
+source_file="res://assets/frog/frog-pissed.png"
+dest_files=["res://.godot/imported/frog-pissed.png-268db51216f108abf8375ac30715de3c.ctex"]
 
 [params]
 

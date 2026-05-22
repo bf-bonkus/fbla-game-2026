@@ -18,11 +18,11 @@ func load_level(level: String, use_pet: bool, use_camera: bool) -> void:
 		$Pet/ReactorActor.query()
 	$Pet.visible = use_pet
 	$Camera.enabled = use_camera
-	
+
 	var staged_level_resource := load(level)
 	var staged_level: Node = staged_level_resource.instantiate()
 	add_child(staged_level)
-	
+
 	current_level = get_child(get_children().size() - 1)
 	move_child(current_level, 1)
 	$UserInterface/LoadingScreen.color = Color(0,0,0,0)

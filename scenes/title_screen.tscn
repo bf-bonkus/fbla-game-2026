@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cafee30k0c54r" path="res://secondrate.jpg" id="2_sa3yf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fgkus"]
-font_size = 55
+font_size = 85
 
 [sub_resource type="InputEventKey" id="InputEventKey_fgkus"]
 device = -1
@@ -60,7 +60,7 @@ vertical_alignment = 1
 [node name="Title" type="Label" parent="Body/Title" unique_id=1180371824]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Pet Pianofrog (Working Title)"
+text = "Keyfrog"
 label_settings = SubResource("LabelSettings_fgkus")
 horizontal_alignment = 1
 vertical_alignment = 1

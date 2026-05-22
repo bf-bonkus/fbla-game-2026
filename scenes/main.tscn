@@ -16,6 +16,7 @@ color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Pet" parent="." unique_id=1581812624 instance=ExtResource("2_0wfyh")]
+position = Vector2(0, 5)
 
 [node name="Camera" type="Camera2D" parent="." unique_id=122697356]
 zoom = Vector2(5, 5)

@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://dt1stvxqhjpe5"]
+
+[ext_resource type="FontFile" uid="uid://cjsdnv75tes7y" path="res://assets/Notepen.ttf" id="1_5x3i2"]
+
+[resource]
+default_font = ExtResource("1_5x3i2")
+default_font_size = 30

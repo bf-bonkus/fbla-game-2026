@@ -3,7 +3,7 @@ extends Node2D
 var idle := true
 
 func update_dirt() -> void:
-	$Dirt.modulate = Color(1, 1, 1, $ReactorActor.context[&"dirtiness"]/100)
+	$Dirt.modulate = Color(1, 1, 1, ($ReactorActor.context[&"dirtiness"] - 30) /100)
 
 # Timers
 func _on_jitter_timer_timeout() -> void:

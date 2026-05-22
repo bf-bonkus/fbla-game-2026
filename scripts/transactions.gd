@@ -16,7 +16,7 @@ func transact(purpose: String, diff: float) -> void:
 	new_transaction.purpose = purpose
 	new_transaction.diff = diff
 	new_transaction.pre_balance = cash
-	
+
 	transactions.append(new_transaction)
 	cash += diff
 	ReactorCore.global_context["cash"] = cash
